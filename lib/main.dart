@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Text("Красноармейская улица, 37, Ростов-на-Дону"),
                       Text("Показать на карте", style: TextStyle(color: Colors.green)),
                       Text("На красноармейской пропал каракал..."),
-                      TextButton(onPressed: buttonChanger, child: Text(textBtn)),
+                      TextButton(onPressed: buttonChanger, child: Text(textBtn), style: ButtonStyle()),
                       Text("Поделиться"),
                       Row(
                         children: [
