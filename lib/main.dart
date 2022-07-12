@@ -5,7 +5,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 const shlepaLink = "https://s3-alpha-sig.figma.com/img/c8b4/c0bc/264e523dbc555830c1ae7783a2b9fc11?Expires=1658707200&Signature=RnyejWUuBrFn92SP5VZ63MpqE9S9OciiDENn~keQKzOTdMBANwRyNvseWzsg6BMyJeqe6Q2Yv7~TNNbyLFTaFaq0~dT8XQeqwGtRT2UOoAkh6auOaYHIghI857Nf~CBG-oLASHObm0rI0i5J9YIFCIPicrFbYIEsijOu2dx22aLr4n6QmIipCH6rw93Svwa4jBSen9MaBPjqJ8hQxeg~-8aQnjRL-bijEPA1VuyG4bzb6yq-wg-myKzrfRwiJWBsFyAdj4hrYk3nLSLVCffkj7BzM-7qLOWmtjSd-fdsPeh~1436PTPJAXDrDBtMmArR4DLk-pVnDySPNtmZ2OIVDw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA";
 const textKarakalLost = "На Красноармейской пропал каракал. Предположительно выпрыгнул через открытое окно. Отзывается на свою кличку “Шлёпа” или “Русский кот”. Очень любит пельмени. Клеймо отсутствует, полное телосложение. Чистый и ухоженный, людей не боится.";
-const double totalHeight = 1900;
+const double totalHeight = 2600;
+const double greyPartHeight = 800;
 
 void main() {
   runApp(const MyApp());
@@ -231,7 +232,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(
                       flex: -1,
                       child: Column(children: [
-                        Divider(color: Colors.black),
+                        Expanded(
+                            flex: 0,
+                            child: Container(
+                                padding: EdgeInsets.only(left: 20, right: 20),
+                                child:Divider(color: Colors.black)
+                            )
+                        ),
                         Row(
                           children: [
                             Expanded(
@@ -428,23 +435,98 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   ),
 
+                  //Дивайдер
+                  Expanded(
+                      flex: 0,
+                      child: Container(
+                          padding: EdgeInsets.only(left: 20, right: 20),
+                          child:Divider(color: Colors.black)
+                      )
+                  ),
 
+                  //Пожаловаться на объявление
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(Icons.warning_amber_outlined, color: Colors.green),
+                      Padding(padding: EdgeInsets.only(left: 5), child:Text("Пожаловаться на объявление", style: TextStyle(color: Colors.green)))
+                    ]
+                  ),
+
+                  //Дивайдер
+                  Expanded(
+                      flex: 0,
+                      child:Divider(color: Colors.grey, height: 1,)
+                  ),
+
+                  //Куча текста
                   Container(
-                    child: Text("asd"),
-                  ),
-
-
-                  Row(
-                    children: const [
-                      Text("ASDASD")
-                    ],
-                  ),
-
-
-                  Row(
-                    children: const [
-                      Text("ASDASD")
-                    ],
+                      alignment: Alignment.centerLeft,
+                      height: greyPartHeight,
+                      padding: EdgeInsets.only(left: 20, right: 20),
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.1)
+                      ),
+                      child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(padding: EdgeInsets.only(top: 20), child: Text("Pet911", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                          SizedBox(height: 200, child: Expanded(child: ListView(
+                            padding: EdgeInsets.only(top: 10),
+                            physics: NeverScrollableScrollPhysics(),
+                            children: const [
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Разместите объявление")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Платные услуги")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Полезные советы")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Отзывы")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Вопросы-ответы")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("О нас")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Контакты")),
+                            ],
+                          )
+                          )),
+                          Expanded(
+                              flex: 0,
+                              child:Divider(color: Colors.black)
+                          ),
+                          Padding(padding: EdgeInsets.only(top: 10), child: Text("Ускорьте поиск питомца", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                          SizedBox(height: 180, child: Expanded(child: ListView(
+                            padding: EdgeInsets.only(top: 10),
+                            physics: NeverScrollableScrollPhysics(),
+                            children: const [
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Распространите объявление в социальных сетях")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Оповестите клиники и приюты")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Сообщите волонтёрам о пропаже")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Оповестите жителей района")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Создайте премиум-объявление")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Получайте уведомления о похожих питомцах")),
+                            ],
+                          )
+                          )
+                          ),
+                          Expanded(
+                              flex: 0,
+                              child:Divider(color: Colors.black.withOpacity(0.6))
+                          ),
+                          Padding(padding: EdgeInsets.only(top: 10), child: Text("Помощь", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                          SizedBox(height: 70, child: Expanded(child: ListView(
+                            padding: EdgeInsets.only(top: 10),
+                            physics: NeverScrollableScrollPhysics(),
+                            children: const [
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Станьте волонтёром")),
+                              Padding(padding: EdgeInsets.only(top: 5, bottom: 5), child: Text("Поддержите проект")),
+                            ],
+                          )
+                          )
+                          ),
+                          Expanded(
+                              flex: 0,
+                              child:Divider(color: Colors.black.withOpacity(0.6), height: 5,)
+                          ),
+                          Padding(padding: EdgeInsets.only(top: 10), child: Text("Связаться с нами", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                        ],
+                      )
                   )
 
                 ],
