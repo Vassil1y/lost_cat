@@ -8,8 +8,8 @@ import 'my_icons.dart' as icn;
 var _controller = TextEditingController();
 const shlepaLink = "https://s3-alpha-sig.figma.com/img/c8b4/c0bc/264e523dbc555830c1ae7783a2b9fc11?Expires=1658707200&Signature=RnyejWUuBrFn92SP5VZ63MpqE9S9OciiDENn~keQKzOTdMBANwRyNvseWzsg6BMyJeqe6Q2Yv7~TNNbyLFTaFaq0~dT8XQeqwGtRT2UOoAkh6auOaYHIghI857Nf~CBG-oLASHObm0rI0i5J9YIFCIPicrFbYIEsijOu2dx22aLr4n6QmIipCH6rw93Svwa4jBSen9MaBPjqJ8hQxeg~-8aQnjRL-bijEPA1VuyG4bzb6yq-wg-myKzrfRwiJWBsFyAdj4hrYk3nLSLVCffkj7BzM-7qLOWmtjSd-fdsPeh~1436PTPJAXDrDBtMmArR4DLk-pVnDySPNtmZ2OIVDw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA";
 const textKarakalLost = "На Красноармейской пропал каракал. Предположительно выпрыгнул через открытое окно. Отзывается на свою кличку “Шлёпа” или “Русский кот”. Очень любит пельмени. Клеймо отсутствует, полное телосложение. Чистый и ухоженный, людей не боится.";
-const double totalHeight = 2400;
-const double greyPartHeight = 811;
+const double totalHeight = 2394;
+const double greyPartHeight = 833;
 
 
 void main() {
@@ -94,13 +94,12 @@ class _MyHomePageState extends State<MyHomePage> {
               height: totalHeight,
               child: Column(
                 children: [
-
                   //Первая карусель
                   Stack(
                       alignment: AlignmentDirectional.bottomCenter,
                       children:[
                         SizedBox(
-                            height: 231,
+                            height: 215,
                             child: PageView(
                               scrollDirection: Axis.horizontal,
                               children: const [
@@ -110,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Image(image: NetworkImage(shlepaLink)),
                               ],
                               controller: controller,
-                              onPageChanged: (number) {shlepaChanger(number+1);},
+                              onPageChanged: (number){shlepaChanger(number+1);},
                             )
                         ),
                         Container(
@@ -176,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
 
                   //Текст "пропал каракал"
-                  Flexible(
+                  SizedBox(height: 178, child:Flexible(
                       child:Padding(
                           padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                           child: Text(
@@ -185,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   fontFamily: 'Roboto',
                                   fontSize: 17)
                           )
-                      )
+                      ))
                   ),
 
                   //Кнопка с номером
@@ -547,18 +546,19 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Text("Пн-Пт с 9:00 до 18:00 (МСК)"),
                                 ],
                               ),
-                                Column(
+                                Expanded(child:Column(
                                   children: [
                                     Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
                                       children: const [
-                                        Padding(padding: EdgeInsets.all(6), child:Icon(icn.MyFlutterApp.vkontakte)),
-                                        Padding(padding: EdgeInsets.all(6), child:Icon(icn.MyFlutterApp.facebook_official)),
-                                        Padding(padding: EdgeInsets.all(6), child:Icon(icn.MyFlutterApp.odnoklassniki)),
-                                        Padding(padding: EdgeInsets.all(6), child:Icon(icn.MyFlutterApp.twitter)),
+                                        Padding(padding: EdgeInsets.all(3), child:Icon(icn.MyFlutterApp.vkontakte)),
+                                        Padding(padding: EdgeInsets.all(3), child:Icon(icn.MyFlutterApp.facebook_official)),
+                                        Padding(padding: EdgeInsets.all(3), child:Icon(icn.MyFlutterApp.odnoklassniki)),
+                                        Padding(padding: EdgeInsets.all(3), child:Icon(icn.MyFlutterApp.twitter)),
                                       ],
                                     )
                                   ],
-                              )
+                              ))
                             ],
                           ),
 
