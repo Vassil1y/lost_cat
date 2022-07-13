@@ -3,10 +3,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'my_icons.dart' as icn;
+
+var _controller = TextEditingController();
 const shlepaLink = "https://s3-alpha-sig.figma.com/img/c8b4/c0bc/264e523dbc555830c1ae7783a2b9fc11?Expires=1658707200&Signature=RnyejWUuBrFn92SP5VZ63MpqE9S9OciiDENn~keQKzOTdMBANwRyNvseWzsg6BMyJeqe6Q2Yv7~TNNbyLFTaFaq0~dT8XQeqwGtRT2UOoAkh6auOaYHIghI857Nf~CBG-oLASHObm0rI0i5J9YIFCIPicrFbYIEsijOu2dx22aLr4n6QmIipCH6rw93Svwa4jBSen9MaBPjqJ8hQxeg~-8aQnjRL-bijEPA1VuyG4bzb6yq-wg-myKzrfRwiJWBsFyAdj4hrYk3nLSLVCffkj7BzM-7qLOWmtjSd-fdsPeh~1436PTPJAXDrDBtMmArR4DLk-pVnDySPNtmZ2OIVDw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA";
 const textKarakalLost = "На Красноармейской пропал каракал. Предположительно выпрыгнул через открытое окно. Отзывается на свою кличку “Шлёпа” или “Русский кот”. Очень любит пельмени. Клеймо отсутствует, полное телосложение. Чистый и ухоженный, людей не боится.";
-const double totalHeight = 2600;
-const double greyPartHeight = 800;
+const double totalHeight = 2400;
+const double greyPartHeight = 811;
+
 
 void main() {
   runApp(const MyApp());
@@ -126,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //Тексты
                   Row(
                     children: [
-                      Padding(
+                      Flexible(child: Padding(
                           padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
                           child:Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ]
                           )
-                      )
+                      ))
                     ]
                   ),
 
@@ -291,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
 
                   //Список "найдена кошка"
-                  Expanded(
+              SizedBox(height: 311, child: Expanded(
                       child: ListView.builder(
                           padding: const EdgeInsets.all(8),
                           scrollDirection: Axis.horizontal,
@@ -323,7 +327,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             );
                           }
                           )
-                  ),
+                  )
+              ),
 
                   //Надпись "11 комментариев"
                   Container(
@@ -348,8 +353,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
                             child: TextField(
+                                controller: _controller,
                             decoration: InputDecoration(
-                              suffixIcon: TextButton(onPressed: (){}, child: Text("Отпр.")),
+                              suffixIcon: TextButton(onPressed: _controller.clear, child: Text("Отпр.")),
                               hintText: "Ваш комментарий...",
                               fillColor: Colors.white,
                               filled: true,
@@ -361,79 +367,71 @@ class _MyHomePageState extends State<MyHomePage> {
                                   width: 2,
                                 ),
                               ),
-
                             )
                         ),
                       ),
                     ),
 
                   //Список комментариев
-                  Expanded(
+              SizedBox(height: 270, child: Expanded(
                     child: ListView(
                       padding: EdgeInsets.only(top: 10),
                         physics: NeverScrollableScrollPhysics(),
                       children:[
-                        Column(
-                              children: [
                                 Container(
                                   decoration: BoxDecoration(
                                     color: Colors.green.withOpacity(0.2)
                                   ),
                                     child:Row(
                                         children:[
-                                          Padding(padding: EdgeInsets.only(left: 20, top: 4, bottom: 6, right: 20),
+                                          Flexible(child: Padding(padding: EdgeInsets.only(left: 20, top: 4, bottom: 6, right: 20),
                                               child:Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children:[
                                                     Padding(padding: EdgeInsets.only(bottom: 6), child:Text("Арсений", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))),
-                                                    Text("“На Красноармейской пропал каракал” -",),
-                                                    Padding(padding: EdgeInsets.only(bottom: 6), child:Text(" звучит уже неплохо!")),
+                                                    Padding(padding: EdgeInsets.only(bottom: 6), child:Text("“На Красноармейской пропал каракал” - звучит уже неплохо!")),
                                                     Text("Понедельник, 5:33", style: TextStyle(color: Colors.black.withOpacity(0.4)))
                                                   ]
                                               )
                                           )
+                                    )
                                         ]
                                     )
                                 ),
-                                Container(
-                                    child:Row(
-                                        children:[
-                                          Padding(padding: EdgeInsets.only(left: 20, top: 4, bottom: 6, right: 20),
-                                              child:Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children:[
-                                                    Padding(padding: EdgeInsets.only(bottom: 6), child:Text("Дмитрий", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))),
-                                                    Text("Как вернусь в Ростов, обыщу наши подвалы,"),
-                                                    Padding(padding: EdgeInsets.only(bottom: 6), child:Text("я рядом живу")),
-                                                    Text("Понедельник, 6:47", style: TextStyle(color: Colors.black.withOpacity(0.4)))
-                                                  ]
-                                              )
+                                Row(
+                                    children:[
+                                      Flexible(child:Padding(padding: EdgeInsets.only(left: 20, top: 4, bottom: 6, right: 20),
+                                          child:Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children:[
+                                                Padding(padding: EdgeInsets.only(bottom: 6), child:Text("Дмитрий", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))),
+                                                Padding(padding: EdgeInsets.only(bottom: 6), child:Text("Как вернусь в Ростов, обыщу наши подвалы, я рядом живу")),
+                                                Text("Понедельник, 6:47", style: TextStyle(color: Colors.black.withOpacity(0.4)))
+                                              ]
                                           )
-                                        ]
-                                    )
+                                      )
+                                      )
+                                    ]
                                 ),
-                                Container(
-                                    child:Row(
-                                        children:[
-                                          Padding(padding: EdgeInsets.only(left: 20, top: 4, bottom: 6, right: 20),
-                                              child:Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children:[
-                                                    Padding(padding: EdgeInsets.only(bottom: 6), child:Text("Арсений", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))),
-                                                    Text("“На Красноармейской пропал каракал” -",),
-                                                    Padding(padding: EdgeInsets.only(bottom: 6), child:Text(" звучит уже неплохо!")),
-                                                    Text("Понедельник, 17:33", style: TextStyle(color: Colors.black.withOpacity(0.4)))
-                                                  ]
-                                              )
+                                Row(
+                                    children:[
+                                      Flexible(child: Padding(padding: EdgeInsets.only(left: 20, top: 4, bottom: 6, right: 20),
+                                          child:Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children:[
+                                                Padding(padding: EdgeInsets.only(bottom: 6), child:Text("Арсений", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))),
+                                                Padding(padding: EdgeInsets.only(bottom: 6), child:Text("“На Красноармейской пропал каракал” - звучит уже неплохо!")),
+                                                Text("Понедельник, 17:33", style: TextStyle(color: Colors.black.withOpacity(0.4)))
+                                              ]
                                           )
-                                        ]
-                                    )
+                                      )
+                                      )
+                                    ]
                                 ),
-                          ],
-                        )
                       ],
                     )
-                  ),
+                  )
+              ),
 
                   //Дивайдер
                   Expanded(
@@ -471,6 +469,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       child:Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+
+                          //Часть 1
                           Padding(padding: EdgeInsets.only(top: 20), child: Text("Pet911", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                           SizedBox(height: 200, child: Expanded(child: ListView(
                             padding: EdgeInsets.only(top: 10),
@@ -486,10 +486,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             ],
                           )
                           )),
+
+                          //Дивайдер
                           Expanded(
                               flex: 0,
                               child:Divider(color: Colors.black)
                           ),
+
+                          //Часть 2
                           Padding(padding: EdgeInsets.only(top: 10), child: Text("Ускорьте поиск питомца", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                           SizedBox(height: 180, child: Expanded(child: ListView(
                             padding: EdgeInsets.only(top: 10),
@@ -505,10 +509,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           )
                           )
                           ),
+
+                          //Дивайдер
                           Expanded(
                               flex: 0,
                               child:Divider(color: Colors.black.withOpacity(0.6))
                           ),
+
+                          //Часть 3
                           Padding(padding: EdgeInsets.only(top: 10), child: Text("Помощь", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                           SizedBox(height: 70, child: Expanded(child: ListView(
                             padding: EdgeInsets.only(top: 10),
@@ -520,15 +528,60 @@ class _MyHomePageState extends State<MyHomePage> {
                           )
                           )
                           ),
+
+                          //Дивайдер
                           Expanded(
                               flex: 0,
                               child:Divider(color: Colors.black.withOpacity(0.6), height: 5,)
                           ),
-                          Padding(padding: EdgeInsets.only(top: 10), child: Text("Связаться с нами", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+
+                          //Часть 4
+                          Padding(padding: EdgeInsets.only(top: 10, bottom: 10), child: Text("Связаться с нами", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text("8 (800) 350-06-10", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+                                  Text("Пн-Пт с 9:00 до 18:00 (МСК)"),
+                                ],
+                              ),
+                                Column(
+                                  children: [
+                                    Row(
+                                      children: const [
+                                        Padding(padding: EdgeInsets.all(6), child:Icon(icn.MyFlutterApp.vkontakte)),
+                                        Padding(padding: EdgeInsets.all(6), child:Icon(icn.MyFlutterApp.facebook_official)),
+                                        Padding(padding: EdgeInsets.all(6), child:Icon(icn.MyFlutterApp.odnoklassniki)),
+                                        Padding(padding: EdgeInsets.all(6), child:Icon(icn.MyFlutterApp.twitter)),
+                                      ],
+                                    )
+                                  ],
+                              )
+                            ],
+                          ),
+
+                          //Дивайдер
+                          Expanded(
+                              flex: 0,
+                              child:Divider(color: Colors.black.withOpacity(0.6), height: 70)
+                          ),
+
+                          //Серый текст
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Пропавшие и найденные животные России", style: TextStyle(color: Colors.black.withOpacity(0.4))),
+                              Padding(padding: EdgeInsets.only(bottom: 10), child: Text("Пропавшие и найденные животные России по породам", style: TextStyle(color: Colors.black.withOpacity(0.4)))),
+
+                              Text("Политика конфеденциальности", style: TextStyle(color: Colors.black.withOpacity(0.4))),
+                              Text("Условия пользования", style: TextStyle(color: Colors.black.withOpacity(0.4))),
+                            ],
+                          )
                         ],
                       )
                   )
-
                 ],
               )
           )
